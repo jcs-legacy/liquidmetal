@@ -7,7 +7,7 @@
 ;; Description: Quicksilver scoring algorithm, essentially LiquidMetal
 ;; Keyword: fuzzy matching
 ;; Version: 1.3.0
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "24.4"))
 ;; URL: https://github.com/jcs-elpa/liquidmetal
 
 ;; This file is NOT part of GNU Emacs.
@@ -32,8 +32,6 @@
 
 ;;; Code:
 
-(require 'cl-lib)
-
 (defconst liquidmetal-score-no-match 0.0
   "The score indicating a negative match.")
 
@@ -44,10 +42,10 @@
   "The score to return when the abrreviation string is empty.")
 
 (defconst liquidmetal-score-trailing-but-started 0.9
-  "")
+  "Trailing score but not the start of string.")
 
 (defconst liquidmetal-score-buffer 0.85
-  "")
+  "Trailing score at the start of string.")
 
 (defconst liquidmetal-word-separators "[ \t_-]"
   "Separator to indentify a next new word.")
@@ -69,7 +67,7 @@ The return value is in the range 0.0 to 1.0 the later being full-match."
       (if (nth index clone-array)
           (setf (nth index clone-array) value)
         (setq clone-array (append clone-array (list value))))
-      (cl-incf index))
+      (setq index (1+ index)))
     clone-array))
 
 (defun liquidmetal-index-of (array item &optional start)
@@ -92,7 +90,16 @@ Optional argument START is the starting of the search index."
     (string= c (upcase c))))
 
 (defun liquidmetal-score-all (string search abbrev search-index abbr-index scores &optional all-scores)
-  "Return all the score."
+  "Iterate through STRING and determine the overall score.
+
+Argument STRING is target to search through.
+Argument SEARCH is the lowercase of of STRING.
+Argument ABBREV is the lowercase of abbreviation.
+Argument SEARCH-INDEX is pass for iterating matching string.
+Argument ABBR-INDEX is pass for iterating abbreviation string
+Argument SCORES stores the last result to ALL-SCORES.
+
+Optional argument ALL-SCORES is stored for recusrive result."
   (if (= abbr-index (length abbrev))
       (let* ((started (string= (substring search 0 1) (substring abbrev 0 1)))
              (trail-score (if started liquidmetal-score-trailing-but-started liquidmetal-score-trailing)))
@@ -101,7 +108,7 @@ Optional argument START is the starting of the search index."
     (let* ((c (substring abbrev abbr-index (1+ abbr-index)))
            (index (liquidmetal-index-of search c search-index))
            (score-index search-index))
-      (cl-incf abbr-index)
+      (setq abbr-index (1+ abbr-index))
       (when index
         (while (progn
                  (setq index (liquidmetal-index-of search c (1+ search-index)))
