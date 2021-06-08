@@ -1,0 +1,11 @@
+# ignore these directories.
+/.git
+/recipes
+/test
+liquidmetal-pkg.el
+
+# ignore generated files.
+*.elc
+
+# ignore video
+/video
