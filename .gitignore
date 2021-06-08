@@ -1,6 +1,7 @@
 # ignore these directories.
 /.git
 /recipes
+/project
 liquidmetal-pkg.el
 
 # ignore generated files.
