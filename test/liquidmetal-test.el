@@ -31,7 +31,7 @@
 (ert-deftest liquidmetal-test-score ()
   (should (= (liquidmetal-score "FooBar" "foo") 0.9500000000000001))
   (should (= (liquidmetal-score "FooBar" "fb") 0.9166666666666669))
-  (should (= (liquidmetal-score "Foo Bar" "fb") 0.9142857142857145))
+  (should (= (liquidmetal-score "Foo Bar" "fb") 0.9285714285714287))
   (should (= (liquidmetal-score "Foo Bar" "baz") 0.0))
   (should (= (liquidmetal-score "Foo Bar" "") 0.8)))
 

@@ -50,6 +50,20 @@
 (defconst liquidmetal-word-separators "[ \t_-]"
   "Separator to indentify a next new word.")
 
+(defun liquidmetal--create-array (len)
+  "Create a empy array with LEN."
+  (let (new-array)
+    (dotimes (_ len) (push -1 new-array))
+    new-array))
+
+(defun liquidmetal--set-array (array index value)
+  "Safe way to set VALUE to ARRAY's item by INDEX."
+  (let ((clone-array array) (diff (1+ (- index (length array)))))
+    (when (<= 0 index)
+      (setq clone-array (append clone-array (liquidmetal--create-array diff)))
+      (setf (nth index clone-array) value))
+    clone-array))
+
 ;;;###autoload
 (defun liquidmetal-score (string abbreviation)
   "Computes the score of matching STRING with ABBREVIATION.
@@ -114,9 +128,7 @@ Optional argument ALL-SCORES is stored for recusrive result."
                  (setq index (liquidmetal-index-of search c (1+ search-index)))
                  index)
           (cond ((liquidmetal-is-new-word string index)
-                 (if (nth (1- index) scores)
-                     (setf (nth (1- index) scores) liquidmetal-score-match)
-                   (push liquidmetal-score-match scores))
+                 (setq scores (liquidmetal--set-array scores (1- index) liquidmetal-score-match))
                  (setq scores
                        (liquidmetal-fill-array scores liquidmetal-score-buffer (1+ score-index) (1- index))))
                 ((liquidmetal-is-upper-case string index)
