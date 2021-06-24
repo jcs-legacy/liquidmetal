@@ -150,12 +150,12 @@ Optional argument ALL-SCORES is stored for recusrive result."
   "Calculates the fuzzy score of matching STRING with ABBREVIATION."
   (let* ((search (downcase string)) (abbrev (downcase abbreviation))
          (all-scores (liquidmetal-score-all string search abbrev -1 0 nil))
-         (max-score 0.0) max-array score-sum)
+         (max-score 0.0) score-sum)
     (if (= (length all-scores) 0) 0.0
       (dolist (scores all-scores)
         (setq score-sum (apply '+ scores))
         (when (> score-sum max-score)
-          (setq max-score score-sum max-array scores)))
+          (setq max-score score-sum)))
       (setq max-score (/ max-score (length string))))
     max-score))
 
