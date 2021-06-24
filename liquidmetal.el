@@ -32,6 +32,8 @@
 
 ;;; Code:
 
+(require 'subr-x)
+
 (defconst liquidmetal-score-no-match 0.0
   "The score indicating a negative match.")
 
