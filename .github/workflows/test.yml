@@ -44,10 +44,6 @@ jobs:
                    pip3 install python-language-server
                    sudo apt-get install clangd-9
 
-            - name: Check clangd
-              if: runner.os == 'Linux'
-              run: "clangd-9 --version"
-
             - name: Run tests
               run:
                 make unix-ci
