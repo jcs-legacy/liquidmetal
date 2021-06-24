@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+    unix-test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                emacs-version:
+                    - 26.1
+                    - 26.2
+                    - 26.3
+                    - 27.1
+                    - 27.2
+                    - snapshot
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - uses: actions/setup-python@v2
+              with:
+                  python-version: "3.6"
+                  architecture: "x64"
+
+            - uses: purcell/setup-emacs@master
+              with:
+                  version: ${{ matrix.emacs-version }}
+
+            - uses: cask/setup-cask@master
+              with:
+                  version: 1.1.0
+
+            - name: Setup cmake
+              uses: jwlawson/actions-setup-cmake@v1.4
+              with:
+                 cmake-version: '3.18.x'
+
+            - name: Check cmake
+              run: "cmake --version"
+
+            - name: Install depedencies on Linux
+              if: runner.os == 'Linux'
+              run: |
+                   pip3 install python-language-server
+                   sudo apt-get install clangd-9
+
+            - name: Install deps on macOS
+              if: runner.os == 'macOS'
+              run: |
+                   pip3 install python-language-server
+
+            - name: Check clangd
+              if: runner.os == 'Linux'
+              run: "clangd-9 --version"
+
+            - name: Run tests
+              run:
+                make unix-ci
