@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; Tests for lsp-protocol.
+;; Tests for liquidmetal algorithm outcomes.
 
 ;;; Code:
 
