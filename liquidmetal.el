@@ -1,10 +1,10 @@
-;;; liquidmetal.el --- Quicksilver scoring algorithm, essentially LiquidMetal  -*- lexical-binding: t; -*-
+;;; liquidmetal.el --- A mimetic poly-alloy of the Quicksilver scoring algorithm  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Shen, Jen-Chieh
 ;; Created date 2021-06-08 12:59:19
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: Quicksilver scoring algorithm, essentially LiquidMetal
+;; Description: A mimetic poly-alloy of the Quicksilver scoring algorithm
 ;; Keyword: fuzzy matching
 ;; Version: 1.3.0
 ;; Package-Requires: ((emacs "24.4"))
@@ -27,7 +27,7 @@
 
 ;;; Commentary:
 ;;
-;; Quicksilver scoring algorithm, essentially LiquidMetal
+;; A mimetic poly-alloy of the Quicksilver scoring algorithm
 ;;
 ;; The algorithm is created by Ryan McGeary and it's ported from the repository
 ;; https://github.com/rmm5t/liquidmetal.
