@@ -1,4 +1,6 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![MELPA](https://melpa.org/packages/liquidmetal-badge.svg)](https://melpa.org/#/liquidmetal)
+[![MELPA Stable](https://stable.melpa.org/packages/liquidmetal-badge.svg)](https://stable.melpa.org/#/liquidmetal)
 
 # Liquid Metal
 > A mimetic poly-alloy of the Quicksilver scoring algorithm
