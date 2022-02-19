@@ -3,25 +3,27 @@ SHELL := /usr/bin/env bash
 EMACS ?= emacs
 CASK ?= cask
 
-LQM-FILES := liquidmetal.el
+PKG-FILES := liquidmetal.el
 
-.PHONY: clean checkdoc lint unix-build unix-compile	unix-test
+TEST-FILES := $(shell ls test/liquidmetal-*.el)
 
-unix-ci: clean unix-build unix-compile unix-test
+.PHONY: clean checkdoc lint build compile unix-test
 
-unix-build:
+ci: clean build compile
+
+build:
 	$(CASK) install
 
-unix-compile:
+compile:
 	@echo "Compiling..."
 	@$(CASK) $(EMACS) -Q --batch \
 		-L . \
 		--eval '(setq byte-compile-error-on-warn t)' \
-		-f batch-byte-compile $(LQM-FILES)
+		-f batch-byte-compile $(PKG-FILES)
 
 unix-test:
 	@echo "Testing..."
-	$(CASK) exec ert-runner -L . -L clients	$(LOAD-TEST-FILES) -t '!no-win' -t '!org'
+	$(CASK) exec ert-runner -L . $(LOAD-TEST-FILES) -t '!no-win' -t '!org'
 
 clean:
-	rm -rf .cask *.elc clients/*.elc
+	rm -rf .cask *.elc
