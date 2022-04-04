@@ -1,6 +1,10 @@
 (source "melpa")
 
+(package "liquidmetal" "1.3.0" "A mimetic poly-alloy of the Quicksilver scoring algorithm")
+
 (package-file "liquidmetal.el")
+
+(depends-on "emacs" "24.4")
 
 (development
  (depends-on "ert-runner"))
