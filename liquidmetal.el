@@ -4,11 +4,10 @@
 ;; Created date 2021-06-08 12:59:19
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: A mimetic poly-alloy of the Quicksilver scoring algorithm
-;; Keyword: fuzzy matching
+;; URL: https://github.com/jcs-elpa/liquidmetal
 ;; Version: 1.3.0
 ;; Package-Requires: ((emacs "24.4"))
-;; URL: https://github.com/jcs-elpa/liquidmetal
+;; Keywords: fuzzy matching
 
 ;; This file is NOT part of GNU Emacs.
 
