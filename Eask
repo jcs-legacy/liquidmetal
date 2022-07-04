@@ -3,7 +3,7 @@
          "A mimetic poly-alloy of the Quicksilver scoring algorithm")
 
 (website-url "https://github.com/jcs-elpa/liquidmetal")
-(keywords "fuzzy" "matching")
+(keywords "matching" "fuzzy")
 
 (package-file "liquidmetal.el")
 
