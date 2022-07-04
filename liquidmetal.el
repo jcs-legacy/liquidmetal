@@ -7,7 +7,7 @@
 ;; URL: https://github.com/jcs-elpa/liquidmetal
 ;; Version: 1.3.0
 ;; Package-Requires: ((emacs "24.4"))
-;; Keywords: fuzzy matching
+;; Keywords: matching fuzzy
 
 ;; This file is NOT part of GNU Emacs.
 
