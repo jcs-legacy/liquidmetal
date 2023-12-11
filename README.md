@@ -5,7 +5,7 @@
 # Liquid Metal
 > A mimetic poly-alloy of the Quicksilver scoring algorithm
 
-[![CI](https://github.com/jcs-elpa/liquidmetal/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/liquidmetal/actions/workflows/test.yml)
+[![CI](https://github.com/jcs-legacy/liquidmetal/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-legacy/liquidmetal/actions/workflows/test.yml)
 
 Port from https://github.com/rmm5t/liquidmetal.
 
