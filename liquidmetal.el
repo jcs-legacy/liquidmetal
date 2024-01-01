@@ -1,6 +1,6 @@
 ;;; liquidmetal.el --- A mimetic poly-alloy of the Quicksilver scoring algorithm  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021  Shen, Jen-Chieh
+;; Copyright (C) 2021-2024  Shen, Jen-Chieh
 ;; Created date 2021-06-08 12:59:19
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
