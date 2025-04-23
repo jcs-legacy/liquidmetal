@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "liquidmetal"
          "1.3.0"
          "A mimetic poly-alloy of the Quicksilver scoring algorithm")
